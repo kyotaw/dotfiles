@@ -1,5 +1,8 @@
-# Set up the prompt
+# Use modern completion system
+autoload -Uz compinit
+compinit
 
+# Set up the prompt
 autoload -Uz promptinit
 promptinit
 prompt walters
@@ -7,19 +10,28 @@ prompt walters
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -v
 
+# History
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=1000
+SAVEHIST=1000
 HISTFILE=~/.zsh_history
 setopt hist_ignore_dups
+setopt hist_ignore_space
 setopt share_history
 
-# Use modern completion system
-autoload -Uz compinit
-compinit
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end 
 
 # Locale
 export LANG=ja_JP.UTF-8
+
+# Directory change
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
