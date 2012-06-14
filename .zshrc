@@ -2,6 +2,10 @@
 autoload -Uz compinit
 compinit
 
+# Predict
+autoload predict-on
+predict-on
+
 # Set up the prompt
 autoload -Uz promptinit
 promptinit
@@ -33,6 +37,13 @@ setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
 
+# Sugestion
+setopt correct
+
+# Others
+setopt list_packed
+setopt nolistbeep
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
@@ -55,4 +66,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 PATH=$PATH:~/bin/firefox/
 
 # Aliases
-alias ff-dev='firefox -P dev -no-remote'
+alias la="ls -a"
+alias ll="ls -l"
+alias df="df -h"
+alias ff-dev="firefox -P dev -no-remote"
