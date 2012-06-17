@@ -60,15 +60,47 @@ setopt nolistbeep
 setopt noautoremoveslash
 
 # Pass
-PATH=$PATH:~/bin/firefox
+# Dependent on environment
+case $(uname) in
+  Linux)
+    PATH=$PATH:~/bin/firefox
+	;;
+  CYGWIN*)
+    PATH=$PATH:"/cygdrive/c/Program Files/Mozilla Firefox"
+	PATH=$PATH:"/cygdrive/c/Program Files/Microsoft Office/Office"
+	PATH=$PATH:"/cygdrive/c/Program Files/Microsoft Office/Office12"
+	PATH=$PATH:"/cygdrive/c/Program Files/Microsoft Visual Studio 9.0/Common7/IDE" 
+	;;
+esac
 
 # Aliases
+# General
 setopt complete_aliases
 alias ls="ls --color"
 alias la="ls -a"
 alias ll="ls -l"
 alias df="df -h"
 alias ff-dev="firefox -P dev -no-remote"
+
+# Dependent on environment
+case $(uname) in
+  Linux)
+    ;;
+  CYGWIN*)
+    alias wd="WINWORD"
+	alias xl="EXCEL"
+	alias pp="POWERONT"
+	alias vc9="devenv"
+    alias -s pdf=acrobat
+	alias -s doc=wd
+	alias -s xls=xl
+	alias -s ppt=pp
+	alias -s pptx=pp
+	alias -s sln=vc9
+	alias -s vcproj=vc9
+	alias -s txt=vim
+    ;;
+esac
 
 # import 'mine' settings if present
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
