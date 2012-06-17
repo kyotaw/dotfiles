@@ -87,11 +87,12 @@ case $(uname) in
   Linux)
     ;;
   CYGWIN*)
+    alias ac="acrobat"
     alias wd="WINWORD"
 	alias xl="EXCEL"
-	alias pp="POWERONT"
+	alias pp="POWERPNT"
 	alias vc9="devenv"
-    alias -s pdf=acrobat
+    alias -s pdf=ac
 	alias -s doc=wd
 	alias -s xls=xl
 	alias -s ppt=pp
