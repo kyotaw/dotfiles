@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="UserListApp">
+	<head>
+		<meta charaset="utf-8"/>
+		<script src="lib/angular/angular.js"></script>
+		<script src="register.js"></script>
+		<link rel="stylesheet" href="register.css"/>
+	</head>
+	<body ng-controller="UserListCtrl">
+		<div id="workspace">
+			<div id="register">
+				<form>
+					<div id="name" class ="user-attr">
+						<span class="attr-key">蜷榊燕</span>
+						<input class="attr-val" type="text"/>
+					</div>
+					<div id="mail" class="user-attr">
+						<span class="attr-key">繝｡繝ｼ繝ｫ繧｢繝峨Ξ繧ｹ</span>
+						<input class="attr-val" type="email"/>
+					</div>
+					<button class="register">逋ｻ骭ｲ</button>
+				</form>
+			</div>
+			<div id="user-list">
+				<ul class="user-list">
+					<li ng-repeat="user in users">
+						<div class="user-record">
+							<div ng-class="ddarfa">
+								<p>{{user.name}}</p>
+							</div>
+							<div ng-class="user-attr-name : {user.mail === "繝｡繝ｼ繝ｫ繧｢繝峨Ξ繧ｹ"};">
+								<p>{{user.mail}}</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
+
+var userListApp = angular.module('UserListApp', []);
+
+userListApp.controller('UserListCtrl', function UserListCtrl($scope){
+	$scope.users = [
+		{'name' : '蜷榊燕', 'mail' : '繝｡繝ｼ繝ｫ繧｢繝峨Ξ繧ｹ'},
+		{'name' : 'kyotaw', 'mail' : 'ssss@ss.com'},
+		{'name' : 'kyotaw3', 'mail' : 'ssss2@ss.com'}
+	];
+});
+
+
