@@ -41,11 +41,14 @@ bindkey "^N" history-beginning-search-forward-end
 
 # Locale
 export LANG=ja_JP.UTF-8
+export LC_MESSAGE=C
 
 # Directory change
 setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
+# auto ls
+function chpwd() { ls }
 
 # Sugestion
 setopt correct
@@ -67,7 +70,7 @@ case $(uname) in
 	;;
   CYGWIN*)
     PATH=$PATH:"/cygdrive/c/Program Files/Mozilla Firefox"
-	PATH=$PATH:"/cygdrive/c/Program Files/Microsoft Office/Office"
+	PATH=$PATH:"/cygdrive/c/Program Files/Microsoft Office/Office11"
 	PATH=$PATH:"/cygdrive/c/Program Files/Microsoft Office/Office12"
 	PATH=$PATH:"/cygdrive/c/Program Files/Microsoft Visual Studio 9.0/Common7/IDE" 
 	;;
@@ -82,6 +85,19 @@ alias ll="ls -l"
 alias df="df -h"
 alias ff-dev="firefox -P dev -no-remote"
 
+google() {
+ local str opt
+ if [ $# != 0 ]; then
+   for i in $*; do
+   # $strが空じゃない場合、検索ワードを+記号でつなぐ(and検索)
+     str="$str${str:++}$i"
+   done
+   opt='search?num=100'
+   opt="${opt}&q=${str}"
+ fi
+ open -a Google\ Chrome http://www.google.co.jp/$opt
+}
+
 # Dependent on environment
 case $(uname) in
   Linux)
@@ -92,6 +108,8 @@ case $(uname) in
 	alias xl="EXCEL"
 	alias pp="POWERPNT"
 	alias vc9="devenv"
+	alias netstat="NETSTAT"
+	alias windump="WinDump"
     alias -s pdf=ac
 	alias -s doc=wd
 	alias -s xls=xl
