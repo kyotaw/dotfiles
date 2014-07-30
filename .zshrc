@@ -83,6 +83,7 @@ alias ls="ls --color"
 alias la="ls -a"
 alias ll="ls -l"
 alias df="df -h"
+alias chrome="google-chrome"
 alias ff-dev="firefox -P dev -no-remote"
 
 google() {
