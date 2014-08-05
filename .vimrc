@@ -1,26 +1,58 @@
+"searching
+set ignorecase
+set incsearch
+set hlsearch
+
+"editing 
 set nocompatible
+set shiftround
+set infercase
+set encoding=utf-8
+"set virtualedit=all
 set backspace=start,eol,indent
 set mouse=
 set tabstop=4
+set textwidth=0
+"set colorcolumn=80
 set indentkeys=""
 set showmatch
-set showcmd
-set number
 syntax on
-set nohlsearch
 set laststatus=2
-set incsearch
-set ignorecase
 set wildmenu wildmode=list:full
+set matchpairs& matchpairs+=<:>
+
+"no backup files
+set nowritebackup
+set nobackup
+set noswapfile
+
+"display
+"set list
 set vb t_vb=
+set novisualbell
+set number
+set showcmd
 
 "key mappings
+
+"tab
 nnoremap [Tag] <Nop>
 nmap t [Tag]
 nnoremap [Tag]n : tabnext<CR>
 nnoremap [Tag]p : tabprevious<CR>
 nnoremap [Tag]o : tabe 
-nnoremap [Tag]x : tabclose<CR> 
+nnoremap [Tag]x : tabclose<CR>
+"jump
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+nnoremap # #zz
+nnoremap g* g*zz
+nnoremap g# g#zz
+nnoremap <S-Left>  <C-w><<CR>
+nnoremap <S-Right> <C-w>><CR>
+nnoremap <S-Up>    <C-w>-<CR>
+nnoremap <S-Down>  <C-w>+<CR>
 
 "neobundle settings
 
@@ -35,11 +67,30 @@ call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 "plugins
-NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'grep.vim'
 NeoBundle 'alpaca-tc/vim-endwise.git'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/unite.vim'
+
+NeoBundleLazy 'Shougo/vimfiler', {
+  \ "depends": ["Shougo/unite.vim"],
+  \ "autoload": {
+  \   "commands": ["VimFilerTab", "VimFiler", "VimFilerExplorer"],
+  \   "mapping": ['<Plug>(vimfiler_switch)'],
+  \   "explorer": 1,
+  \ }}
+nnoremap [Explorer] <Nop>
+nmap <Leader> [Explorer]
+nnoremap <Leader>e : VimFilerExplorer<CR>
+
+NeoBundleLazy 'Shougo/neocomplete.vim', {
+\  "autoload": {
+\    "insert": 1,
+\}}
+
 
 filetype plugin indent on
 
