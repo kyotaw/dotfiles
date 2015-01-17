@@ -79,18 +79,26 @@ esac
 # Aliases
 # General
 setopt complete_aliases
-alias ls="ls --color"
-alias la="ls -a"
-alias ll="ls -l"
 alias df="df -h"
 alias chrome="google-chrome"
 alias ff-dev="firefox -P dev -no-remote"
 
 # Dependent on environment
-case $(uname) in
-  Linux)
+case ${OSTYPE} in
+  linux*)
+    alias ls="ls --color"
+    alias la="ls -a"
+    alias ll="ls -l"
+    ;;
+  darwin*)
+    alias ls="ls -G"
+    alias la="ls -aG"
+    alias ll="ls -lG"
     ;;
   CYGWIN*)
+    alias ls="ls --color"
+    alias la="ls -a"
+    alias ll="ls -l"
     alias ac="acrobat"
     alias wd="WINWORD"
 	alias xl="EXCEL"
