@@ -55,15 +55,3 @@ else
   installed pyenv
 fi
 
-#if test ! -e ~/.pip 
-#then
-#  echo "install pip"
-#  wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py | sudo python
-#  echo "install virtualenv"
-#  sudo pip install virtualenv
-#  sudo pip install virtualenvwrapper
-#  source /usr/local/bin/virtualenvwrapper.sh
-#else
-#  installed pip
-#fi
-
