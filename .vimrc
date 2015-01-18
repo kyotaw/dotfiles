@@ -61,10 +61,10 @@ if has('vim_starting')
 endif
 
 "initialize
-call neobundle#rc(expand('~/.vim/bundle'))
-
+call neobundle#begin(expand('~/.vim/bundle'))
 "update
 NeoBundleFetch 'Shougo/neobundle.vim'
+call neobundle#end()
 
 "plugins
 "NeoBundle 'scrooloose/nerdtree'
@@ -72,8 +72,15 @@ NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'grep.vim'
 NeoBundle 'alpaca-tc/vim-endwise.git'
-NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/unite.vim'
+
+NeoBundle 'Shougo/vimproc', {
+  \ "build" : {
+    \ "cygwin" : "make -f make_cygwin.mak",
+    \ "mac" : "make -f make_mac.mak",
+    \ "unix" : "make -f make_unix.mak",
+  \ },
+\ }
 
 NeoBundleLazy 'Shougo/vimfiler', {
   \ "depends": ["Shougo/unite.vim"],
@@ -90,7 +97,7 @@ NeoBundleLazy 'Shougo/neocomplete.vim', {
 \  "autoload": {
 \    "insert": 1,
 \}}
-
+let g:neocomplete#enable_at_startup = 1
 
 filetype plugin indent on
 
