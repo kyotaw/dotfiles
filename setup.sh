@@ -17,6 +17,9 @@ add_env(){
 add_path(){
   echo "export PATH=\"$1:\$PATH\"" >> ~/.zshrc.mine
 }
+add_source(){
+  echo "source $1" >> ~/.zshrc.mine
+}
 add_stat(){
 	echo $1 >> ~/.zshrc.mine
 }
@@ -27,7 +30,7 @@ defined(){
     if [ "'$'$env" = "" ]; then
 		exit 0
     fi
-  fi
+
   exit 1
 }
 
@@ -54,6 +57,9 @@ fi
 #for Python
 echo "###setting up environment for Python"
 
+install .pep8
+
+# pyenv
 if test ! -e ~/.pyenv
 then
   echo "install pyenv"
@@ -64,6 +70,18 @@ then
   add_stat 'eval "$(pyenv init -)"'
 else
   installed pyenv
+fi
+
+# virtualenv
+if test ! -e ~/.virtualenvs
+then
+	echo "install virtualenv"
+	case ${OSTYPE} in
+	  darwin*)
+	    pip3 install virtualenv virtualenvwrapper
+	    add_env VIRTUALENVWRAPPER_PYTHON /usr/local/bin/python3
+	    add_source /usr/local/bin/virtualenvwrapper.sh
+        ;;
 fi
 
 if [ -z $PYTHONDoNTWRITEBYTECODE ]; then
