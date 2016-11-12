@@ -11,7 +11,9 @@ set encoding=utf-8
 "set virtualedit=all
 set backspace=start,eol,indent
 set mouse=
+set expandtab
 set tabstop=4
+set shiftwidth=4
 set textwidth=0
 "set colorcolumn=80
 set indentkeys=""
