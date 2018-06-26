@@ -34,8 +34,15 @@ set vb t_vb=
 set novisualbell
 set number
 set showcmd
+set belloff=all
 
 "key mappings
+
+"gtags
+map <C-h> :Gtags -f %<CR>
+map <C-j> :GtagsCursor<CR>
+map <C-n> :cn<CR>
+map <C-p> :cp<CR>
 
 "tab
 nnoremap [Tag] <Nop>
@@ -70,11 +77,16 @@ call neobundle#end()
 
 "plugins
 "NeoBundle 'scrooloose/nerdtree'
+
+NeoBundle "tpope/vim-fugitive.git"
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'grep.vim'
 NeoBundle 'alpaca-tc/vim-endwise.git'
 NeoBundle 'Shougo/unite.vim'
+
+NeoBundle 'leafgarland/typescript-vim'
+let g:syntastic_typescript_tsc_args = "--experimentalDecorators --target ES5"
 
 NeoBundle 'Shougo/vimproc', {
   \ "build" : {
