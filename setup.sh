@@ -30,7 +30,7 @@ defined(){
     if [ "'$'$env" = "" ]; then
 		exit 0
     fi
-
+  fi
   exit 1
 }
 
