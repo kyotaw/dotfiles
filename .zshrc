@@ -6,12 +6,12 @@ colors
 
 case ${UID} in
 0)
-	PROMPT="%B%{${fg[red]}%}%m%b%{${fg[blue]}@%}%/#%{${fg[green]}%}"
+	PROMPT="%B%{${fg[red]}%}%m%b%{${fg[cyan]}@%}%/#%{${fg[green]}%}"
 	PROMPT2="%{${fg[blue]}%}%_#%{${fg[green]}%}"
 	SPROMPT="%B%{${fg[red]%}%r%b%{${fg[green]}%} is correct? [n,y,a,e]:"
 	;;
 *)
-	PROMPT="%{${reset_color}%}%n%{${fg[blue]}@%}%~#%{${fg[green]}%}"
+	PROMPT="%{${reset_color}%}%n%{${fg[cyan]}@%}%~#%{${fg[green]}%}"
 	PROMPT2="%{${fg[blue]}%}%_#%{${fg[green]}%}"
 	SPROMPT="%B%{${fg[red]%}%r%b%{${fg[green]}%} is correct? [n,y,a,e]:"
 	unset RPROMPT

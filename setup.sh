@@ -82,6 +82,7 @@ then
 	    add_env VIRTUALENVWRAPPER_PYTHON /usr/local/bin/python3
 	    add_source /usr/local/bin/virtualenvwrapper.sh
         ;;
+    esac
 fi
 
 if [ -z $PYTHONDoNTWRITEBYTECODE ]; then

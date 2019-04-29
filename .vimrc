@@ -73,7 +73,6 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 "update
 NeoBundleFetch 'Shougo/neobundle.vim'
-call neobundle#end()
 
 "plugins
 "NeoBundle 'scrooloose/nerdtree'
@@ -116,5 +115,7 @@ let g:neocomplete#enable_at_startup = 1
 filetype plugin indent on
 
 NeoBundleCheck
+
+call neobundle#end()
 
 "end neobundle settings
